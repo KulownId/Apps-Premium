@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kulown.Id — App Premium Murah & Terpercaya</title>
+<meta name="description" content="Beli app premium murah dan bergaransi di Kulown.Id. Spotify, Canva, ChatGPT+, dan 60+ aplikasi lainnya. Harga sachet, open 24 jam, respon cepat.">
+<meta property="og:title" content="Kulown.Id — App Premium Murah & Terpercaya">
+<meta property="og:description" content="60+ aplikasi premium, harga sachet, garansi penuh, open 24 jam.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07101e; --s1:#0d1a2e; --s2:#132035;
+  --gold:#f0c050; --gold2:#ffd97a; --blue:#60a5fa;
+  --green:#34d399; --red:#f87171;
+  --text:#dde8f5; --muted:#4a6a8a;
+  --border:rgba(255,255,255,0.07); --card:rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden}
+
+/* ambient blobs */
+.blob{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;animation:blobFloat 10s ease-in-out infinite}
+.blob1{width:500px;height:400px;background:rgba(240,192,80,.05);top:-100px;left:-100px;animation-delay:0s}
+.blob2{width:400px;height:400px;background:rgba(96,165,250,.04);bottom:-100px;right:-80px;animation-delay:-4s}
+.blob3{width:300px;height:300px;background:rgba(52,211,153,.03);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-7s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,15px) scale(.95)}}
+.blob1{animation-name:blobFloat}
+.blob2{animation:blob2Float 12s ease-in-out infinite}
+@keyframes blob2Float{0%,100%{transform:translate(0,0)}50%{transform:translate(-25px,-18px)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(7,16,30,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:800;color:var(--gold);letter-spacing:-.5px;text-decoration:none}
+.nav-logo span{color:var(--text);font-weight:600}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-cta{background:var(--gold);color:#07101e;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;transition:all .25s;white-space:nowrap;box-shadow:0 4px 14px rgba(240,192,80,.3)}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-2px) scale(1.03);box-shadow:0 6px 20px rgba(240,192,80,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(7,16,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;flex-direction:column;padding:16px 28px 28px;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:13px 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-menu a:last-child{border:none;color:var(--gold);font-weight:700;margin-top:8px}
+
+/* HERO */
+.hero{padding:160px 28px 90px;text-align:center;position:relative;z-index:1;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.hero-orb1{width:240px;height:240px;background:radial-gradient(circle,rgba(240,192,80,.1),transparent 70%);top:100px;left:5%;animation:orb1 7s ease-in-out infinite}
+.hero-orb2{width:180px;height:180px;background:radial-gradient(circle,rgba(96,165,250,.09),transparent 70%);bottom:60px;right:6%;animation:orb2 9s ease-in-out infinite}
+.hero-orb3{width:120px;height:120px;background:radial-gradient(circle,rgba(52,211,153,.07),transparent 70%);top:40%;right:18%;animation:orb1 5s ease-in-out infinite 2s}
+@keyframes orb1{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(8deg)}}
+@keyframes orb2{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(240,192,80,.1);border:1px solid rgba(240,192,80,.22);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 18px;border-radius:100px;margin-bottom:28px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both}
+.hero-badge::before{content:'✦';animation:spin 4s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes popIn{from{opacity:0;transform:scale(.7) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,8vw,70px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:22px;animation:fadeUp .65s .15s ease both;opacity:0}
+h1 em{font-style:normal;color:var(--gold);display:inline-block;position:relative}
+h1 em::after{content:'';position:absolute;left:0;bottom:-2px;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),rgba(240,192,80,0));border-radius:2px}
+.hero-sub{color:var(--muted);font-size:17px;font-weight:400;max-width:450px;margin:0 auto 40px;animation:fadeUp .65s .28s ease both;opacity:0;line-height:1.75}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .65s .4s ease both;opacity:0}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#07101e;padding:15px 28px;border-radius:100px;font-weight:700;font-size:15px;text-decoration:none;transition:all .25s;box-shadow:0 6px 24px rgba(240,192,80,.3)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-3px) scale(1.02);box-shadow:0 10px 32px rgba(240,192,80,.45)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:15px 28px;border-radius:100px;font-weight:500;font-size:15px;text-decoration:none;transition:all .25s}
+.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);transform:translateY(-3px)}
+
+/* TRUST */
+.trust-strip{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:0 28px 72px;position:relative;z-index:1;animation:fadeUp .65s .52s ease both;opacity:0}
+.trust-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:10px 20px;border-radius:100px;font-size:13px;font-weight:500;color:var(--muted);transition:all .25s;cursor:default}
+.trust-item:hover{border-color:rgba(240,192,80,.25);color:var(--text);transform:translateY(-2px)}
+
+/* SECTION */
+.section{padding:72px 28px;max-width:920px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-label::before{content:'';width:24px;height:2px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:10px;letter-spacing:-.5px;line-height:1.15}
+.section-sub{color:var(--muted);font-size:14px;margin-bottom:36px;font-weight:400;line-height:1.8}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:72px}
+.stat{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:28px 16px;text-align:center;border-radius:24px;transition:all .3s;position:relative;overflow:hidden}
+.stat::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(240,192,80,.05),transparent);opacity:0;transition:opacity .3s}
+.stat:hover{border-color:rgba(240,192,80,.25);transform:translateY(-5px) rotate(-0.5deg)}
+.stat:hover::after{opacity:1}
+.stat-number{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:var(--gold);display:block;line-height:1.1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:16px}
+.step-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:28px;padding:30px 24px;transition:all .35s;position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;bottom:-40px;right:-40px;width:100px;height:100px;background:radial-gradient(circle,rgba(240,192,80,.07),transparent);border-radius:50%;transition:all .4s}
+.step-card:hover{border-color:rgba(240,192,80,.25);transform:translateY(-6px) rotate(-0.5deg);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.step-card:hover::before{transform:scale(2.5)}
+.step-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:800;color:rgba(240,192,80,.12);line-height:1;margin-bottom:10px}
+.step-icon{font-size:30px;margin-bottom:12px;display:block}
+.step-title{font-weight:700;font-size:15px;margin-bottom:8px;color:var(--text)}
+.step-desc{color:var(--muted);font-size:13px;line-height:1.75}
+
+/* SEARCH */
+.search-wrapper{position:relative;margin-bottom:18px}
+.search-wrapper svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px;pointer-events:none}
+#searchInput{width:100%;padding:16px 18px 16px 52px;background:var(--s2);border:1.5px solid var(--border);border-radius:18px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;transition:all .25s}
+#searchInput:focus{border-color:rgba(240,192,80,.45);background:rgba(19,32,53,.9);box-shadow:0 0 0 5px rgba(240,192,80,.06)}
+#searchInput::placeholder{color:var(--muted)}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.tab{padding:8px 18px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .25s}
+.tab:hover{border-color:rgba(255,255,255,.15);color:var(--text);transform:translateY(-1px)}
+.tab.active{background:var(--gold);border-color:var(--gold);color:#07101e;font-weight:700;box-shadow:0 4px 14px rgba(240,192,80,.3)}
+
+/* BESTSELLER */
+.bs-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.bestseller-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:32px}
+.bs-card{background:linear-gradient(135deg,rgba(240,192,80,.07),rgba(240,192,80,.02));border:1px solid rgba(240,192,80,.14);border-radius:20px;padding:16px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden}
+.bs-card::after{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;background:radial-gradient(circle,rgba(240,192,80,.1),transparent);border-radius:50%}
+.bs-card:hover{border-color:rgba(240,192,80,.35);transform:translateY(-5px) scale(1.03);box-shadow:0 10px 28px rgba(240,192,80,.12)}
+.bs-emoji{font-size:24px;margin-bottom:8px;display:block;transition:transform .3s}
+.bs-card:hover .bs-emoji{transform:scale(1.25) rotate(-8deg)}
+.bs-name{font-weight:700;font-size:13px;color:var(--text);margin-bottom:3px}
+.bs-price{font-size:11px;color:var(--gold)}
+.bs-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.2);padding:2px 7px;border-radius:100px;margin-bottom:8px}
+
+/* PRODUCT */
+.product-group{margin-bottom:44px}
+.group-title{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.group-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.product-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:10px;transition:all .25s}
+.product-card:hover{border-color:rgba(240,192,80,.2);transform:translateX(5px);box-shadow:-4px 4px 20px rgba(0,0,0,.2)}
+.product-card.open{border-color:rgba(240,192,80,.18);background:rgba(240,192,80,.02)}
+.product-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;user-select:none}
+.product-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.product-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text)}
+.product-tag{font-size:10px;font-weight:700;padding:2px 9px;border-radius:100px;letter-spacing:.5px}
+.tag-hot{background:rgba(248,113,113,.14);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+.tag-new{background:rgba(52,211,153,.14);color:var(--green);border:1px solid rgba(52,211,153,.2)}
+.tag-promo{background:rgba(240,192,80,.14);color:var(--gold);border:1px solid rgba(240,192,80,.2)}
+.chevron{color:var(--muted);transition:transform .3s cubic-bezier(.34,1.56,.64,1);font-size:11px;flex-shrink:0}
+.product-card.open .chevron{transform:rotate(180deg);color:var(--gold)}
+.variants{padding:0 20px 16px;display:none;flex-direction:column;gap:8px}
+.product-card.open .variants{display:flex}
+.variant-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:11px 15px;gap:8px;flex-wrap:wrap;transition:all .2s}
+.variant-row:hover{border-color:rgba(240,192,80,.15);background:rgba(240,192,80,.03)}
+.variant-name{font-size:12px;color:#6a8daa;font-weight:400;flex:1;min-width:120px}
+.variant-right{display:flex;align-items:center;gap:10px}
+.variant-price{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);white-space:nowrap}
+.order-btn{display:inline-flex;align-items:center;gap:5px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);color:#25d366;padding:6px 13px;border-radius:100px;font-size:11px;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap}
+.order-btn:hover{background:rgba(37,211,102,.2);transform:scale(1.06);box-shadow:0 3px 12px rgba(37,211,102,.25)}
+
+/* BUNDLE */
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:18px}
+.bundle-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,192,80,.1);border-radius:28px;padding:28px;position:relative;overflow:hidden;transition:all .35s;display:flex;flex-direction:column}
+.bundle-card::before{content:'';position:absolute;top:-70px;right:-70px;width:180px;height:180px;background:radial-gradient(circle,rgba(240,192,80,.07),transparent 70%);border-radius:50%;transition:all .4s}
+.bundle-card:hover{border-color:rgba(240,192,80,.3);transform:translateY(-7px);box-shadow:0 20px 56px rgba(0,0,0,.3)}
+.bundle-card:hover::before{transform:scale(1.6)}
+.bundle-emoji{font-size:36px;margin-bottom:14px;display:block;transition:transform .35s}
+.bundle-card:hover .bundle-emoji{transform:scale(1.2) rotate(-8deg)}
+.bundle-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:10px;line-height:1.25}
+.bundle-includes{color:var(--muted);font-size:12px;margin-bottom:18px;line-height:2;flex:1}
+.bundle-includes span{display:block;padding-left:18px;position:relative}
+.bundle-includes span::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:12px;font-weight:700}
+.bundle-old{font-size:12px;color:var(--muted);text-decoration:line-through;margin-bottom:2px}
+.bundle-price{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:var(--gold);margin-bottom:6px}
+.bundle-save{font-size:11px;background:rgba(52,211,153,.12);color:var(--green);padding:3px 11px;border-radius:100px;font-weight:700;display:inline-block;margin-bottom:18px}
+.bundle-order{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:#07101e;padding:13px;border-radius:100px;font-weight:700;font-size:13px;text-decoration:none;transition:all .25s}
+.bundle-order:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,192,80,.35)}
+
+/* PAYMENT */
+.payment-row{display:flex;gap:12px;flex-wrap:wrap}
+.pay-badge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--border);padding:13px 24px;border-radius:100px;font-size:14px;font-weight:600;color:var(--text);transition:all .25s}
+.pay-badge:hover{border-color:rgba(240,192,80,.3);transform:translateY(-3px);background:rgba(240,192,80,.05)}
+.pay-icon{font-size:22px}
+.speed-badge{margin-top:16px;padding:14px 20px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:16px;font-size:13px;color:var(--green);display:flex;align-items:center;gap:8px}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .25s}
+.faq-item:hover{border-color:rgba(240,192,80,.15)}
+.faq-item.open{border-color:rgba(240,192,80,.22);background:rgba(240,192,80,.02)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;user-select:none;font-weight:600;font-size:14px;gap:14px;transition:color .2s}
+.faq-q:hover{color:var(--gold)}
+.fchev{color:var(--gold);font-size:11px;transition:transform .3s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.faq-item.open .fchev{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;color:#6a8daa;font-size:13px;line-height:1.85}
+.faq-item.open .faq-a{display:block}
+.faq-hl{background:rgba(240,192,80,.07);border:1px solid rgba(240,192,80,.15);border-radius:12px;padding:10px 15px;margin-top:10px;font-size:12px;color:var(--gold);font-weight:600}
+
+/* TESTI */
+.testi-note{background:rgba(240,192,80,.05);border:1px solid rgba(240,192,80,.12);border-radius:16px;padding:14px 20px;margin-bottom:28px;font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.7}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:24px;padding:24px;transition:all .3s}
+.testi-card:hover{transform:translateY(-5px) rotate(0.8deg);border-color:rgba(240,192,80,.2);box-shadow:0 14px 36px rgba(0,0,0,.25)}
+.testi-stars{color:var(--gold);font-size:14px;margin-bottom:12px;letter-spacing:3px}
+.testi-text{font-size:13px;color:#6a8daa;line-height:1.85;margin-bottom:18px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--blue));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#07101e;flex-shrink:0}
+.testi-name{font-size:13px;font-weight:700}
+.testi-location{font-size:11px;color:var(--muted)}
+.testi-add{margin-top:24px;text-align:center;background:rgba(255,255,255,.03);border:1.5px dashed rgba(240,192,80,.18);border-radius:24px;padding:36px 24px}
+.testi-add p{color:var(--muted);font-size:14px;margin-bottom:18px;line-height:1.7}
+
+/* CTA */
+.cta-section{text-align:center;padding:88px 28px;position:relative;z-index:1;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 400px at 50% 50%,rgba(240,192,80,.05),transparent 70%);pointer-events:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 28px;text-align:center;color:var(--muted);font-size:12px;position:relative;z-index:1;line-height:1.9}
+footer strong{color:var(--gold)}
+.footer-rules{max-width:520px;margin:14px auto 0}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:28px;right:28px;z-index:300;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 22px;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 6px 28px rgba(37,211,102,.5);transition:all .3s;animation:floatWA 3.5s ease-in-out infinite}
+@keyframes floatWA{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.float-wa:hover{transform:translateY(-8px) scale(1.05)!important;box-shadow:0 12px 36px rgba(37,211,102,.6)}
+.float-wa svg{width:20px;height:20px;flex-shrink:0}
+
+/* NO RESULTS */
+#noResults{display:none;text-align:center;padding:60px;color:var(--muted)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .float-wa span.float-wa-label{display:none}
+  .float-wa{padding:15px;bottom:20px;right:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- FLOAT WA -->
+<a href="#" class="float-wa" id="floatWA" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.09 1.562 5.845L.057 23.492a.5.5 0 0 0 .608.61l5.757-1.512A11.947 11.947 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.001-1.369l-.36-.213-3.714.975.994-3.62-.234-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
+  <span class="float-wa-label">Chat WA</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kulown<span>.Id</span></a>
+  <ul class="nav-links">
+    <li><a href="#cara-order">Cara Order</a></li>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#bundle">Bundle</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#" class="nav-cta" id="navCTA">💬 Order Sekarang</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#cara-order" onclick="closeMobile()">Cara Order</a>
+  <a href="#produk" onclick="closeMobile()">Produk</a>
+  <a href="#bundle" onclick="closeMobile()">Bundle</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#testimoni" onclick="closeMobile()">Testimoni</a>
+  <a href="#" id="mobileWA">💬 Order via WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb hero-orb1"></div>
+  <div class="hero-orb hero-orb2"></div>
+  <div class="hero-orb hero-orb3"></div>
+  <div class="hero-badge">Terpercaya & Bergaransi</div>
+  <h1>App Premium<br><em>Mulai Ribuan Aja</em></h1>
+  <p class="hero-sub">60+ aplikasi premium yang biasa dijual mahal, di sini bisa kamu dapetin dengan harga yang bikin senyum 😌</p>
+  <div class="hero-btns">
+    <a href="#produk" class="btn-primary">🔍 Lihat Semua Produk</a>
+    <a href="#" class="btn-secondary" id="heroWA">💬 Tanya Dulu</a>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-item">✅ Garansi Ganti Baru</div>
+  <div class="trust-item">⚡ Kirim &lt; 5 Menit</div>
+  <div class="trust-item">🕐 Open 24 Jam</div>
+  <div class="trust-item">🔒 Aman & Terpercaya</div>
+  <div class="trust-item">💰 Harga Paling Murah</div>
+</div>
+
+<!-- STATS -->
+<div class="section" style="padding-top:0">
+  <div class="stats-row reveal">
+    <div class="stat"><span class="stat-number">60+</span><div class="stat-label">Jenis Aplikasi</div></div>
+    <div class="stat"><span class="stat-number">24/7</span><div class="stat-label">Siap Melayani</div></div>
+    <div class="stat"><span class="stat-number">&lt;5m</span><div class="stat-label">Waktu Kirim</div></div>
+    <div class="stat"><span class="stat-number">100%</span><div class="stat-label">Full Garansi</div></div>
+  </div>
+</div>
+
+<!-- CARA ORDER -->
+<section class="section reveal" id="cara-order">
+  <div class="section-label">Panduan</div>
+  <h2 class="section-title">Cara Order, Gampang Banget 👇</h2>
+  <p class="section-sub">Cuma 4 langkah, prosesnya cepet, gak ribet.</p>
+  <div class="steps">
+    <div class="step-card"><div class="step-num">01</div><div class="step-icon">🔍</div><div class="step-title">Pilih Produk</div><p class="step-desc">Cari app yang kamu mau di katalog. Klik untuk lihat pilihan durasi dan harganya.</p></div>
+    <div class="step-card"><div class="step-num">02</div><div class="step-icon">💬</div><div class="step-title">Klik Order</div><p class="step-desc">Klik tombol "Order" — pesan WA langsung ke-isi otomatis. Tinggal send!</p></div>
+    <div class="step-card"><div class="step-num">03</div><div class="step-icon">💳</div><div class="step-title">Transfer</div><p class="step-desc">Bayar via GoPay, DANA, atau QRIS. Konfirmasi ke admin setelah transfer.</p></div>
+    <div class="step-card"><div class="step-num">04</div><div class="step-icon">🎉</div><div class="step-title">Akun Meluncur!</div><p class="step-desc">Dalam 5 menit akun udah ada di WA kamu. Jangan lupa kirim SS login ya buat garansi!</p></div>
+  </div>
+</section>
+
+<!-- PRODUK -->
+<section class="section reveal" id="produk">
+  <div class="section-label">Katalog</div>
+  <h2 class="section-title">Semua Produk</h2>
+  <p class="section-sub">Klik nama produk buat lihat harga. Klik "Order" langsung chat WA.</p>
+
+  <div class="bs-label">🔥 Paling Sering Dibeli</div>
+  <div class="bestseller-strip" id="bestsellerStrip"></div>
+
+  <div class="search-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+    <input type="text" id="searchInput" placeholder="Cari aplikasi... (Spotify, Canva, ChatGPT...)">
+  </div>
+  <div class="filter-tabs" id="filterTabs">
+    <button class="tab active" data-cat="all">Semua</button>
+    <button class="tab" data-cat="streaming">🎬 Streaming</button>
+    <button class="tab" data-cat="musik">🎵 Musik</button>
+    <button class="tab" data-cat="editing">🎨 Editing</button>
+    <button class="tab" data-cat="ai">🤖 AI & Produktivitas</button>
+    <button class="tab" data-cat="belajar">📚 Belajar</button>
+    <button class="tab" data-cat="vpn">🛡️ VPN</button>
+  </div>
+  <div id="productList"></div>
+  <div id="noResults">
+    <div style="font-size:40px;margin-bottom:14px">🔍</div>
+    <div style="margin-bottom:18px;font-size:14px">Gak ketemu? Tanyain langsung aja!</div>
+    <a href="#" class="btn-primary" id="noResultWA">💬 Tanya via WA</a>
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section class="section reveal" id="bundle">
+  <div class="section-label">Hemat Lebih</div>
+  <h2 class="section-title">Paket Bundle 🎁</h2>
+  <p class="section-sub">Beli dua sekaligus, bayar lebih murah dari harga satuan. Jujur & transparan.</p>
+  <div class="bundle-grid" id="bundleGrid"></div>
+</section>
+
+<!-- PAYMENT -->
+<section class="section reveal" id="pembayaran">
+  <div class="section-label">Transaksi</div>
+  <h2 class="section-title">Cara Bayar</h2>
+  <p class="section-sub">Tersedia berbagai metode pembayaran digital, semua cepet dan mudah.</p>
+  <div class="payment-row">
+    <div class="pay-badge"><span class="pay-icon">💚</span> GoPay</div>
+    <div class="pay-badge"><span class="pay-icon">💙</span> DANA</div>
+    <div class="pay-badge"><span class="pay-icon">🟦</span> QRIS</div>
+  </div>
+  <div class="speed-badge">⚡ Akun dikirim <strong style="color:var(--text);margin:0 4px">kurang dari 5 menit</strong> setelah bayar terkonfirmasi — bahkan tengah malam pun!</div>
+</section>
+
+<!-- FAQ -->
+<section class="section reveal" id="faq">
+  <div class="section-label">Pertanyaan</div>
+  <h2 class="section-title">FAQ — Hal yang Sering Ditanyain 🙋</h2>
+  <p class="section-sub">Biar kamu gak bingung sebelum order.</p>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="section reveal" id="testimoni">
+  <div class="section-label">Ulasan</div>
+  <h2 class="section-title">Kata Mereka yang Udah Pernah Order 💬</h2>
+  <p class="section-sub">Testimoni asli dari pelanggan Kulown.Id.</p>
+  <div class="testi-note">💡 <span>Ini placeholder — ganti dengan screenshot WA asli dari customer kamu biar lebih meyakinkan!</span></div>
+  <div class="testi-grid" id="testiGrid"></div>
+  <div class="testi-add">
+    <p>Udah pernah order di Kulown.Id? Cerita dong pengalamannya! Bisa bantu temen-temen yang masih ragu 🙏</p>
+    <a href="#" class="btn-primary" id="testiWA">💬 Kirim Testimoni</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="section-label" style="justify-content:center">Gas Mulai</div>
+  <h2 class="section-title" style="font-size:clamp(30px,5vw,48px)">Tunggu apa lagi? 🚀</h2>
+  <p class="section-sub" style="max-width:380px;margin:0 auto 36px">App premium impian kamu cuma beberapa klik lagi. Gak pake ribet, gak pake lama.</p>
+  <a href="#" class="btn-primary" id="ctaWA" style="font-size:16px;padding:17px 36px">💬 Order Sekarang via WA</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Kulown.Id</strong> — App Premium, Harga Bersahabat 🤍<br>
+  <div class="footer-rules">
+    ⚠️ Harga bisa berubah sewaktu-waktu · 📸 Wajib SS login dalam 1x24 jam buat aktifin garansi · 📱 Login 1 device kecuali disebutkan lain · ❌ Akun disable/dicuri/kelock = no garansi
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════
+// ⚙️  GANTI NOMOR WA KAMU DI SINI
+// ══════════════════════════════════════
+const WA_NUMBER = "628XXXXXXXXXX"; // ← edit ini
+
+// ── data produk ──
+const products = [
+  {name:"Bstation",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"6.500"},{label:"Sharing 3 Bulan",price:"11.000"},{label:"Sharing 1 Tahun",price:"18.000"}]},
+  {name:"Catchplay+",cat:"streaming",tag:"new",variants:[{label:"Sharing 1 Bulan",price:"7.000"},{label:"Sharing 1 Tahun",price:"18.000"}]},
+  {name:"Crunchyroll",cat:"streaming",tag:"new",variants:[{label:"Sharing 1 Bulan",price:"7.000"}]},
+  {name:"Drakor ID",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Tahun",price:"13.000"}]},
+  {name:"Fizzo Novel",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"6.000"}]},
+  {name:"Gagaoolala",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"6.000"}]},
+  {name:"HBO Max",cat:"streaming",tag:null,variants:[{label:"Standar Sharing 1 Bulan",price:"20.000"},{label:"Standar Private 1 Bulan",price:"40.000"}]},
+  {name:"iQIYI",cat:"streaming",tag:"hot",variants:[{label:"Sharing Standar 1 Bulan",price:"8.000"},{label:"Sharing Premium 1 Bulan",price:"10.000"},{label:"Sharing Standar 1 Tahun",price:"22.000"},{label:"Sharing Premium 1 Tahun",price:"24.000"}]},
+  {name:"Prime Video",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"10.000"},{label:"Private 1 Bulan",price:"18.000"}]},
+  {name:"Viki+ Rakuten",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"11.000"}]},
+  {name:"VIU Private",cat:"streaming",tag:"hot",variants:[{label:"1 Bulan",price:"4.500"},{label:"3 Bulan",price:"10.000"},{label:"6 Bulan",price:"18.000"},{label:"Lifetime",price:"22.000"}]},
+  {name:"WeTV",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"9.000"},{label:"Private 1 Bulan",price:"22.000"}]},
+  {name:"Youku",cat:"streaming",tag:null,variants:[{label:"Sharing 1 Bulan",price:"8.000"},{label:"Sharing 3 Bulan",price:"13.000"},{label:"Sharing 1 Tahun",price:"18.000"}]},
+  {name:"Apple Music",cat:"musik",tag:null,variants:[{label:"FamHead 1 Bulan",price:"19.000"},{label:"FamPlan Join Link 1 Bulan",price:"8.000"}]},
+  {name:"Spotify",cat:"musik",tag:"hot",variants:[{label:"FamPlan 1 Bulan",price:"17.000"},{label:"FamPlan 2 Bulan",price:"25.000"},{label:"IndPlan 1 Bulan (Android)",price:"22.000"}]},
+  {name:"YouTube IndPlan GSuite",cat:"musik",tag:null,variants:[{label:"1 Bulan",price:"12.000"}]},
+  {name:"Alight Motion",cat:"editing",tag:null,variants:[{label:"Private 1 Tahun Fullgar",price:"18.000"}]},
+  {name:"Canva Pro",cat:"editing",tag:"promo",variants:[{label:"Join Link 1 Bulan",price:"5.500"},{label:"Head 1 Bulan",price:"12.000"}]},
+  {name:"CapCut Pro",cat:"editing",tag:"hot",variants:[{label:"Sharing 5 User 1 Bulan",price:"10.000"},{label:"Private 7 Hari",price:"10.000"},{label:"Private 1 Bulan Fullgar",price:"22.000"}]},
+  {name:"Lightroom",cat:"editing",tag:null,variants:[{label:"Sharing 1 Tahun",price:"25.000"}]},
+  {name:"PicsArt",cat:"editing",tag:null,variants:[{label:"Sharing 1 Bulan",price:"10.000"},{label:"Private 1 Bulan",price:"18.000"}]},
+  {name:"Remini Web",cat:"editing",tag:null,variants:[{label:"Sharing 1 Bulan",price:"6.500"}]},
+  {name:"VSCO+",cat:"editing",tag:"new",variants:[{label:"Sharing 1 Tahun",price:"15.000"}]},
+  {name:"CamScanner",cat:"ai",tag:null,variants:[{label:"Sharing 1 Bulan",price:"9.000"}]},
+  {name:"ChatGPT+",cat:"ai",tag:"hot",variants:[{label:"Sharing 8 User 1 Bulan",price:"20.000"},{label:"Private 1 Bulan NoGar",price:"22.000"},{label:"Head Private 1 Bulan",price:"25.000"}]},
+  {name:"Grammarly",cat:"ai",tag:null,variants:[{label:"Sharing 1 Bulan",price:"8.000"}]},
+  {name:"Microsoft 365",cat:"ai",tag:null,variants:[{label:"FamPlan 1 Bulan",price:"10.000"}]},
+  {name:"Perplexity",cat:"ai",tag:"new",variants:[{label:"Sharing 1 Bulan",price:"12.000"}]},
+  {name:"Quillbot",cat:"ai",tag:null,variants:[{label:"Sharing 1 Bulan",price:"12.000"}]},
+  {name:"WPS Pro",cat:"ai",tag:null,variants:[{label:"Sharing 1 Bulan",price:"8.000"}]},
+  {name:"Zoom Pro Private",cat:"ai",tag:null,variants:[{label:"14 Hari",price:"8.000"}]},
+  {name:"Duolingo",cat:"belajar",tag:null,variants:[{label:"FamHead 1 Bulan",price:"9.000"},{label:"FamPlan Join Link 1 Bulan",price:"7.000"}]},
+  {name:"Scribd",cat:"belajar",tag:null,variants:[{label:"Sharing 1 Bulan",price:"10.000"},{label:"Private 1 Bulan",price:"18.000"}]},
+  {name:"Wattpad",cat:"belajar",tag:null,variants:[{label:"Sharing 1 Bulan",price:"8.000"},{label:"Sharing 1 Tahun",price:"18.000"}]},
+  {name:"VPN Surfshark",cat:"vpn",tag:null,variants:[{label:"Sharing 2 Bulan",price:"10.000"}]},
+];
+
+const bundles = [
+  {emoji:"🎨",name:"Paket Creator",includes:["Canva Pro Join Link 1 Bulan","CapCut Pro Sharing 1 Bulan"],satuan:"15.500",price:"12.000",save:"3.500"},
+  {emoji:"🎬",name:"Paket Nonton Hemat",includes:["WeTV Sharing 1 Bulan","iQIYI Sharing Standar 1 Bulan"],satuan:"17.000",price:"15.000",save:"2.000"},
+  {emoji:"🤖",name:"Paket AI Tools",includes:["ChatGPT+ Sharing 1 Bulan","Grammarly Sharing 1 Bulan"],satuan:"28.000",price:"25.000",save:"3.000"},
+  {emoji:"🎵",name:"Paket Hiburan",includes:["Spotify FamPlan 1 Bulan","YouTube IndPlan GSuite 1 Bulan"],satuan:"29.000",price:"26.000",save:"3.000"},
+  {emoji:"📚",name:"Paket Produktif",includes:["Canva Pro Join Link 1 Bulan","Grammarly Sharing 1 Bulan","Quillbot Sharing 1 Bulan"],satuan:"25.500",price:"22.000",save:"3.500"},
+  {emoji:"✏️",name:"Paket Belajar",includes:["Duolingo FamHead 1 Bulan","Scribd Sharing 1 Bulan"],satuan:"19.000",price:"17.000",save:"2.000"},
+];
+
+const testimonials = [
+  {i:"A",name:"Aulia R.",loc:"Bandung",text:"Udah langganan Canva di sini dari berbulan-bulan lalu, harganya konsisten murah banget. Kalau ada masalah langsung direspon cepet. Highly recommended!"},
+  {i:"F",name:"Farhan D.",loc:"Jakarta",text:"ChatGPT+ sharing di sini paling murah yang pernah aku temuin sih. Udah coba beberapa seller lain tapi balik lagi ke Kulown.Id terus."},
+  {i:"S",name:"Sinta M.",loc:"Surabaya",text:"Tiap bulan beli Spotify FamPlan di sini, gak pernah kecewa. Harga murah, proses cepet, garansinya juga aman."},
+  {i:"R",name:"Reza K.",loc:"Lampung",text:"Nyari Crunchyroll murah susah banget, eh ternyata yang lain gak jual. Kulown.Id ada! Langsung jadi pelanggan tetap dari sana."},
+  {i:"D",name:"Dinda P.",loc:"Medan",text:"Responsnya kenceng banget, beda sama seller lain yang suka lama. Order jam 11 malem pun langsung diproses. Top abis!"},
+  {i:"H",name:"Hana W.",loc:"Yogyakarta",text:"Paket Creator (Canva + CapCut) worth it banget! Dua app sekaligus, harganya malah lebih murah dari beli satuan. Gila."},
+];
+
+const bestsellers=[
+  {emoji:"🎨",name:"Canva Pro",price:"mulai 5.500"},
+  {emoji:"✂️",name:"CapCut Pro",price:"mulai 10.000"},
+  {emoji:"🎵",name:"Spotify",price:"mulai 17.000"},
+  {emoji:"🤖",name:"ChatGPT+",price:"mulai 20.000"},
+  {emoji:"📹",name:"Zoom Pro",price:"mulai 8.000"},
+];
+
+const faqs=[
+  {q:"Bayar dulu apa akun dikirim dulu?",a:"Bayar dulu ya. Tapi tenang, begitu pembayaran masuk, akun langsung dikirim ke WA kamu — gak sampai 5 menit!",hl:null},
+  {q:"Bisa bayar pakai apa aja?",a:"Bisa lewat GoPay, DANA, dan QRIS. Nomor tujuannya dikasih admin setelah kamu konfirmasi order.",hl:null},
+  {q:"Berapa lama akun dikirim setelah bayar?",a:"Cepet banget — biasanya di bawah 5 menit setelah bayar terkonfirmasi. Kami ready 24 jam, termasuk malam dan weekend.",hl:"⚡ Rata-rata: < 5 menit"},
+  {q:"Kalau akun bermasalah gimana?",a:"Santai, kami garansi ganti akun baru kalau akun yang dikirim bermasalah. Syaratnya cuma satu: kirim screenshot bukti login ke WA kami maksimal 1x24 jam setelah akun diterima.",hl:"📸 SS login dalam 1x24 jam = garansi aktif"},
+  {q:"Akun bisa dipake di lebih dari 1 HP?",a:"Untuk sebagian besar produk, cukup 1 device ya kecuali disebutkan lain (kayak sharing multi-user). Kalau login di 2 device atau lebih, garansi otomatis hangus.",hl:null},
+  {q:"Ada refund kalau gak jadi pakai?",a:"Maaf, kami gak bisa refund setelah akun dikirim dan bisa dipakai. Tapi kalau akunnya error atau gak bisa dipake dari awal, kami ganti baru tanpa biaya tambahan.",hl:null},
+  {q:"Cara aktifin garansinya gimana?",a:"Gampang! Setelah login ke akun yang dikirim, screenshot tampilan profil atau beranda app-nya, lalu kirim ke WA kami. Maks 1x24 jam ya. Tanpa SS, garansi dianggap hangus.",hl:"📸 Kirim SS login → garansi langsung aktif"},
+  {q:"Ada produk yang gak ada di katalog?",a:"Banyak! Kami ready hampir semua jenis app premium. Langsung tanyain aja ke WA, pasti diusahain!",hl:null},
+];
+
+const catLabels={streaming:"🎬 Streaming Video",musik:"🎵 Musik",editing:"🎨 Editing & Kreatif",ai:"🤖 AI & Produktivitas",belajar:"📚 Belajar & Baca",vpn:"🛡️ VPN & Tools"};
+
+// helpers
+function wa(msg){return`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;}
+function waDefault(){return wa("Halo Kulown.Id, aku mau tanya/order nih!");}
+function tagHTML(t){if(!t)return'';const m={hot:['tag-hot','🔥 HOT'],new:['tag-new','✨ NEW'],promo:['tag-promo','💰 PROMO']};return`<span class="product-tag ${m[t][0]}">${m[t][1]}</span>`;}
+const waIcon=`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.537 4.09 1.562 5.845L.057 23.492a.5.5 0 0 0 .608.61l5.757-1.512A11.947 11.947 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.001-1.369l-.36-.213-3.714.975.994-3.62-.234-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>`;
+
+// render produk
+function renderProducts(list){
+  const el=document.getElementById('productList'),nr=document.getElementById('noResults');
+  if(!list.length){el.innerHTML='';nr.style.display='block';return;}
+  nr.style.display='none';
+  const g={};list.forEach(p=>{if(!g[p.cat])g[p.cat]=[];g[p.cat].push(p);});
+  el.innerHTML=Object.keys(g).map(cat=>`
+    <div class="product-group">
+      <div class="group-title">${catLabels[cat]}</div>
+      ${g[cat].map(p=>`
+        <div class="product-card">
+          <div class="product-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="product-name-row"><span class="product-name">${p.name}</span>${tagHTML(p.tag)}</div>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="variants">
+            ${p.variants.map(v=>`
+              <div class="variant-row">
+                <span class="variant-name">${v.label}</span>
+                <div class="variant-right">
+                  <span class="variant-price">Rp ${v.price}</span>
+                  <a href="${wa(`Halo Kulown.Id, aku mau order nih:\n\n*${p.name} — ${v.label}*\nHarga: Rp ${v.price}\n\nMohon diproses ya, makasih!`)}"
+                     class="order-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">${waIcon} Order</a>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+// render bundle
+document.getElementById('bundleGrid').innerHTML=bundles.map(b=>`
+  <div class="bundle-card">
+    <div class="bundle-emoji">${b.emoji}</div>
+    <div class="bundle-name">${b.name}</div>
+    <div class="bundle-includes">${b.includes.map(i=>`<span>${i}</span>`).join('')}</div>
+    <div class="bundle-old">Beli satuan: Rp ${b.satuan}</div>
+    <div class="bundle-price">Rp ${b.price}</div>
+    <div class="bundle-save">Hemat Rp ${b.save} 🎉</div>
+    <a href="${wa(`Halo Kulown.Id, aku mau order:\n\n*${b.name}*\nHarga Bundle: Rp ${b.price}\n\nMohon diproses ya, makasih!`)}"
+       class="bundle-order" target="_blank" rel="noopener">💬 Order Paket Ini</a>
+  </div>`).join('');
+
+// render bestsellers
+document.getElementById('bestsellerStrip').innerHTML=bestsellers.map(b=>`
+  <div class="bs-card" onclick="filterByName('${b.name}')">
+    <div class="bs-badge">TERLARIS</div>
+    <div class="bs-emoji">${b.emoji}</div>
+    <div class="bs-name">${b.name}</div>
+    <div class="bs-price">Rp ${b.price}</div>
+  </div>`).join('');
+
+// render FAQ
+document.getElementById('faqList').innerHTML=faqs.map((f,i)=>`
+  <div class="faq-item" id="faq${i}">
+    <div class="faq-q" onclick="document.getElementById('faq${i}').classList.toggle('open')">
+      <span>${f.q}</span><span class="fchev">▼</span>
+    </div>
+    <div class="faq-a">${f.a}${f.hl?`<div class="faq-hl">${f.hl}</div>`:''}</div>
+  </div>`).join('');
+
+// render testimoni
+document.getElementById('testiGrid').innerHTML=testimonials.map(t=>`
+  <div class="testi-card">
+    <div class="testi-stars">★★★★★</div>
+    <p class="testi-text">"${t.text}"</p>
+    <div class="testi-author">
+      <div class="testi-avatar">${t.i}</div>
+      <div><div class="testi-name">${t.name}</div><div class="testi-location">${t.loc}</div></div>
+    </div>
+  </div>`).join('');
+
+// set WA links
+['floatWA','navCTA','heroWA','ctaWA','noResultWA','mobileWA'].forEach(id=>{
+  const el=document.getElementById(id);if(el){el.href=waDefault();el.target='_blank';el.rel='noopener';}
+});
+document.getElementById('testiWA').href=wa("Halo Kulown.Id, aku mau kirim testimoni nih!");
+
+// filter by name
+function filterByName(name){
+  document.getElementById('searchInput').value=name;
+  query=name;applyFilters();
+  document.getElementById('produk').scrollIntoView({behavior:'smooth'});
+}
+
+// filter + search
+let activeCat='all',query='';
+function applyFilters(){
+  let f=products;
+  if(activeCat!=='all')f=f.filter(p=>p.cat===activeCat);
+  if(query)f=f.filter(p=>p.name.toLowerCase().includes(query.toLowerCase()));
+  renderProducts(f);
+}
+document.getElementById('searchInput').addEventListener('input',e=>{query=e.target.value;applyFilters();});
+document.getElementById('filterTabs').addEventListener('click',e=>{
+  if(e.target.classList.contains('tab')){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    e.target.classList.add('active');activeCat=e.target.dataset.cat;applyFilters();
+  }
+});
+
+// hamburger
+const hbg=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mm.classList.toggle('open');});
+function closeMobile(){hbg.classList.remove('open');mm.classList.remove('open');}
+
+// scroll reveal
+const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+renderProducts(products);
+</script>
+</body>
+</html>
